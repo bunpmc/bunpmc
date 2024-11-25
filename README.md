@@ -33,16 +33,6 @@
 
 ---
 
-<h3 align="left">📊 GitHub Stats (I'm trying):</h3>
-<p align="center">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=bunpmc&show_icons=true&locale=en&layout=compact" alt="Top Languages" />
-</p>
-<p align="center">
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=bunpmc&show_icons=true&locale=en" alt="GitHub Stats" />
-</p>
-
----
-
 <p align="center">
   <em>“Code is like humor. When you have to explain it, it’s bad.”</em>
 </p>
