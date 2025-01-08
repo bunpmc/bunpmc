@@ -7,8 +7,3 @@
   <em>Welcome to my World 🐋</em>
 </p>
 
----
-
-<p align="center">
-  <em>“Code is like humor. When you have to explain it, it’s bad.”</em>
-</p>
