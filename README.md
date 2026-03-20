@@ -1,6 +1,6 @@
 <div align="center">
 
-# Bu.
+# Bu 🐋
 
 *Writing Code to Change the World (or at Least, My World)*
 
