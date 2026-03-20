@@ -1,6 +1,6 @@
 <div align="center">
 
-# Bu 🐋
+# Bu.
 
 *Writing Code to Change the World (or at Least, My World)*
 
@@ -24,11 +24,10 @@
 `02` &nbsp; **Stats**
 
 <div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=bunpmc&show_icons=true&theme=transparent&hide_border=true&title_color=888780&text_color=888780&icon_color=1D9E75&hide_rank=true)
-&nbsp;&nbsp;
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=bunpmc&layout=compact&theme=transparent&hide_border=true&title_color=888780&text_color=888780&langs_count=8)
-
+  <table><tr>
+    <td><img src="https://github-readme-stats.vercel.app/api?username=bunpmc&show_icons=true&theme=transparent&hide_border=true&title_color=888780&text_color=888780&icon_color=1D9E75&hide_rank=true" /></td>
+    <td><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=bunpmc&layout=compact&theme=transparent&hide_border=true&title_color=888780&text_color=888780&langs_count=8" /></td>
+  </tr></table>
 </div>
 
 ---
