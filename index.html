@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bu | Software Engineer & Designer</title>
+    <meta name="description" content="Portfolio of Bu, a software engineer and designer specialized in web applications and AI-driven systems.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme */
+            --bg-color: #F8F7F3;
+            --text-color: #1A1A1A;
+            --accent-color: #888780;
+            --muted-text: #666666;
+            --card-bg: #FFFFFF;
+            --border-color: #E2E2E2;
+            --selection-bg: #D1D1CB;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --transition-speed: 0.4s;
+        }
+
+        [data-theme='dark'] {
+            --bg-color: #0D0D0D;
+            --text-color: #E0E0E0;
+            --accent-color: #A0A0A0;
+            --muted-text: #888888;
+            --card-bg: #161616;
+            --border-color: #2A2A2A;
+            --selection-bg: #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.02em; }
+        a { color: inherit; text-decoration: none; transition: opacity 0.3s ease; }
+        a:hover { opacity: 0.7; }
+
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 16rem 0; }
+        @media (max-width: 768px) { section { padding: 8rem 0; } }
+
+        /* Navigation */
+        .fixed-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background-color: rgba(248, 247, 243, 0.8);
+            backdrop-filter: blur(10px); transition: background-color 0.4s;
+        }
+        [data-theme='dark'] .fixed-nav { background-color: rgba(13, 13, 13, 0.8); }
+
+        .nav-content { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-item { font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500; }
+
+        /* Buttons */
+        .btn { padding: 0.75rem 2rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.3s; display: inline-block; border: none; }
+        .btn-primary { background-color: var(--text-color); color: var(--bg-color); }
+        .btn-outline { border: 1px solid var(--border-color); color: var(--text-color); background: transparent; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .hero-image { width: 100%; border-radius: 20px; filter: grayscale(20%); transition: filter 0.5s; }
+        .hero-image:hover { filter: grayscale(0%); }
+
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-content { order: 2; }
+            .hero-image-wrapper { order: 1; max-width: 500px; margin: 0 auto; }
+        }
+
+        /* About */
+        .bg-alt { background-color: var(--card-bg); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+        .skill-tag { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.875rem; }
+
+        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+        /* Projects */
+        .works-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 3rem; }
+        .project-card { position: relative; }
+        .project-image-container { position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16/10; }
+        .project-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .project-card:hover .project-image { transform: scale(1.05); }
+
+        .project-overlay {
+            position: absolute; inset: 0; background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;
+        }
+        .project-card:hover .project-overlay { opacity: 1; }
+        .btn-circle { width: 50px; height: 50px; border-radius: 50%; background: white; color: black; display: flex; align-items: center; justify-content: center; }
+
+        .tag-small { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-color); margin-right: 0.5rem; }
+
+        /* Ongoing */
+        .projects-grid-small { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .project-card-small { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; gap: 1.5rem; align-items: center; }
+        .project-card-small:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .project-image-mini { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; }
+        .tag-mini { font-size: 0.65rem; padding: 0.1rem 0.5rem; background: var(--selection-bg); border-radius: 4px; color: var(--muted-text); }
+
+        @media (max-width: 600px) {
+            .projects-grid-small { grid-template-columns: 1fr; }
+            .project-card-small { flex-direction: column; align-items: flex-start; }
+            .works-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+        }
+
+        /* Contact */
+        .contact { text-align: center; }
+        .email-link { display: block; margin: 2rem 0; font-size: 2.5rem; text-decoration: underline; }
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-top: 4rem; }
+
+        /* Theme Toggle */
+        .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-color); padding: 0.5rem; }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Utilities */
+        .muted { color: var(--muted-text); }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+        .text-6xl { font-size: 3.75rem; }
+        .text-8xl { font-size: 6rem; }
+        @media (max-width: 768px) { .text-8xl { font-size: 4rem; } .text-6xl { font-size: 3rem; } }
+    </style>
+</head>
+<body>
+    <nav class="fixed-nav">
+        <div class="container nav-content">
+            <div class="logo serif text-xl font-semibold">Bu.</div>
+            <div class="nav-links">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#works" class="nav-item">Works</a>
+                <a href="#contact" class="nav-item">Contact</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <svg id="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg id="sun-icon" style="display:none" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero container">
+        <div class="hero-grid">
+            <div class="hero-content reveal">
+                <p class="muted serif italic mb-4">Software Engineer & Designer</p>
+                <h1 class="text-6xl text-8xl mb-6">Hello, I'm <span class="serif">Bu</span></h1>
+                <p class="text-xl muted mb-8" style="max-width: 500px">
+                    Writing code to change the world (or at least, my world). I specialize in building modern, scalable web applications and AI-driven systems.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#works" class="btn btn-primary">See my works</a>
+                    <a href="#contact" class="btn btn-outline">Get in touch</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper reveal" style="transition-delay: 0.2s">
+                <img src="assets/hero_flowers_minimalist_1776855257137.png" alt="Hero" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-alt">
+        <div class="container about-grid">
+            <div class="reveal">
+                <h2 class="text-4xl mb-6">About Me</h2>
+                <p class="muted mb-6">
+                    I am a passionate developer with a diverse background in software engineering, ranging from TypeScript/React frontends to high-performance C# and Python backends. I love creating tools that solve real problems and provide seamless user experiences.
+                </p>
+                <div class="skills-grid">
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">ASP.NET Core 9</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Angular</span>
+                </div>
+            </div>
+            <div class="reveal" style="display: flex; flex-direction: column; justify-content: center; transition-delay: 0.2s">
+                <h3 class="serif italic text-3xl mb-2">"Still learning. Still shipping."</h3>
+                <p class="muted">Managed under <a href="https://github.com/My-Own-Working-Space" target="_blank" class="underline" style="text-decoration:underline">My-Own-Working-Space</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="container">
+        <div class="works-header reveal">
+            <div>
+                <p class="muted serif italic">Major Projects</p>
+                <h2 class="text-5xl">Featured Works</h2>
+            </div>
+            <a href="https://github.com/My-Own-Working-Space" target="_blank" class="muted serif italic" style="display:flex; align-items:center; gap:0.5rem">
+                View Organization 
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card reveal">
+                <div class="project-image-container">
+                    <img src="assets/gender_healthcare_actual.png" alt="Gender Healthcare" class="project-image">
+                    <div class="project-overlay">
+                        <a href="https://github.com/My-Own-Working-Space/Gender-Healthcare-Service-Management-System" target="_blank" class="btn-circle">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <div class="mb-2"><span class="tag-small">TypeScript</span><span class="tag-small">Angular</span><span class="tag-small">Supabase</span></div>
+                    <h3 class="text-2xl mb-2">Gender Healthcare</h3>
+                    <p class="muted text-sm">Web-based healthcare platform for patients and clinic administrators.</p>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="project-card reveal" style="transition-delay: 0.1s">
+                <div class="project-image-container">
+                    <img src="assets/transcribe_ai_actual.png" alt="TranscribeAI" class="project-image">
+                    <div class="project-overlay">
+                        <a href="https://github.com/My-Own-Working-Space/TranscribeAi" target="_blank" class="btn-circle">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <div class="mb-2"><span class="tag-small">Python</span><span class="tag-small">FastAPI</span><span class="tag-small">React</span></div>
+                    <h3 class="text-2xl mb-2">TranscribeAI</h3>
+                    <p class="muted text-sm">Multi-agent speech-to-text system using MCP-style tools and FastAPI.</p>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="project-card reveal" style="transition-delay: 0.2s">
+                <div class="project-image-container">
+                    <img src="assets/project_uav_fault_detection_1776858602604.png" alt="Vision Fault Detection" class="project-image">
+                    <div class="project-overlay">
+                        <a href="https://github.com/My-Own-Working-Space/Vision-Based-Fault-Detection" target="_blank" class="btn-circle">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <div class="mb-2"><span class="tag-small">Python</span><span class="tag-small">YOLOv8</span><span class="tag-small">ASP.NET Core 9</span></div>
+                    <h3 class="text-2xl mb-2">Vision-Based Fault Detection</h3>
+                    <p class="muted text-sm">AI-powered fault detection for power grids using UAVs and YOLOv8.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-alt" style="padding: 10rem 0">
+        <div class="container">
+            <div class="reveal mb-8">
+                <p class="muted serif italic">Continuous Development</p>
+                <h2 class="text-4xl">Ongoing & Labs</h2>
+            </div>
+            
+            <div class="projects-grid-small">
+                <!-- Mini Card 1 -->
+                <div class="project-card-small reveal">
+                    <img src="assets/project_uav_inspection_1776855327733.png" class="project-image-mini" alt="Flyntic">
+                    <div style="flex:1">
+                        <h3 class="text-xl">Flyntic Studio</h3>
+                        <p class="muted text-xs mb-2">Modular ASP.NET Core app for drone assembly management.</p>
+                        <div><span class="tag-mini">C#</span><span class="tag-mini">ASP.NET Core</span></div>
+                    </div>
+                    <a href="https://github.com/Eau-Claire/Flyntic-Studio-Demo" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                </div>
+                <!-- Mini Card 2 -->
+                <div class="project-card-small reveal">
+                    <img src="assets/project_telegram_bot_1776858675984.png" class="project-image-mini" alt="Telegram">
+                    <div style="flex:1">
+                        <h3 class="text-xl">Telegram Bot Remote</h3>
+                        <p class="muted text-xs mb-2">Linux machine control bot with Gemini AI integration.</p>
+                        <div><span class="tag-mini">C#</span><span class="tag-mini">Gemini AI</span></div>
+                    </div>
+                    <a href="https://github.com/My-Own-Working-Space/TelegramBot" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                </div>
+                <!-- Mini Card 3 -->
+                <div class="project-card-small reveal">
+                    <img src="assets/project_learn_vietnamese_1776858703158.png" class="project-image-mini" alt="Vietnamese">
+                    <div style="flex:1">
+                        <h3 class="text-xl">Learn Vietnamese</h3>
+                        <p class="muted text-xs mb-2">Interactive 3D educational game with Voice AI platform.</p>
+                        <div><span class="tag-mini">HTML</span><span class="tag-mini">3D Game</span></div>
+                    </div>
+                    <a href="https://github.com/My-Own-Working-Space/Learn-Vietnamese" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                </div>
+                <!-- Mini Card 4 -->
+                <div class="project-card-small reveal">
+                    <img src="assets/project_learning_system_1776858651872.png" class="project-image-mini" alt="Learning">
+                    <div style="flex:1">
+                        <h3 class="text-xl">Online Learning System</h3>
+                        <p class="muted text-xs mb-2">Modern learning platform built with ASP.NET Core 9.</p>
+                        <div><span class="tag-mini">ASP.NET Core 9</span><span class="tag-mini">EF Core</span></div>
+                    </div>
+                    <a href="https://github.com/My-Own-Working-Space/Online-Learning-System" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                </div>
+                <!-- Mini Card 5 -->
+                <div class="project-card-small reveal">
+                    <img src="assets/project_chat_app_1776858629000.png" class="project-image-mini" alt="Chat">
+                    <div style="flex:1">
+                        <h3 class="text-xl">TCP Client Chat App</h3>
+                        <p class="muted text-xs mb-2">WPF group chat application using TCP socket.</p>
+                        <div><span class="tag-mini">C#</span><span class="tag-mini">WPF</span></div>
+                    </div>
+                    <a href="https://github.com/My-Own-Working-Space/TCPClient-ChatApp" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container contact">
+        <div class="reveal">
+            <h2 class="text-5xl mb-6 serif">Let's build something together</h2>
+            <p class="muted text-xl mb-8">Have a project in mind or just want to say hi? My inbox is always open.</p>
+            <a href="mailto:phamhoangminhchau1973@gmail.com" class="email-link serif italic">phamhoangminhchau1973@gmail.com</a>
+            
+            <div class="social-links">
+                <a href="https://github.com/bunpmc" target="_blank">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22"></path></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/minh-ch%C3%A2u-109a293a4" target="_blank">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container" style="padding: 4rem 0; border-top: 1px solid var(--border-color)">
+        <div style="display: flex; justify-content: space-between; align-items: center;" class="muted text-sm">
+            <p>© <span id="year"></span> Bu. All rights reserved.</p>
+            <div style="display: flex; gap: 2rem;">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle
+        const toggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const html = document.documentElement;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateIcons(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme);
+        });
+
+        function updateIcons(theme) {
+            if (theme === 'dark') {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+        }
+
+        // Reveal Animations using Intersection Observer
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
