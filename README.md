@@ -34,17 +34,17 @@
 
 `03` &nbsp; **Selected work**
 
-**[Gender Healthcare Service Management System](https://github.com/bunpmc/Gender-Healthcare-Service-Management-System)**  
+**[Gender Healthcare Service Management System](https://github.com/My-Own-Working-Space/Gender-Healthcare-Service-Management-System)**  
 Web-based healthcare platform for patients and clinic administrators — responsive frontend for doctors, patients, and admins.  
+`TypeScript`
+
+**[TranscribeAI](https://github.com/My-Own-Working-Space/TranscribeAi)**  
+Multi-agent speech-to-text system using MCP-style tools and FastAPI. Confidence-weighted transcriptions.  
 `TypeScript`
 
 **[Flyntic Studio Demo](https://github.com/Eau-Claire/Flyntic-Studio-Demo)**  
 Modular ASP.NET Core app for drone assembly management and simulation. Extensible and built to scale.  
 `Python`
-
-**[TranscribeAI](https://github.com/My-Own-Working-Space/TranscribeAi)**  
-Multi-agent speech-to-text system using MCP-style tools and FastAPI. Confidence-weighted transcriptions.  
-`TypeScript`
 
 ---
 
