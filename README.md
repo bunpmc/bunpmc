@@ -39,6 +39,10 @@ Web-based healthcare platform for patients and clinic administrators — respons
 
 **[TranscribeAI](https://github.com/My-Own-Working-Space/TranscribeAi)**  
 Multi-agent speech-to-text system using MCP-style tools and FastAPI. Confidence-weighted transcriptions.  
+`ASP.NET Core 9.0, FastAPI, Groq`
+
+**[Vision-Based-Fault-Detection](https://github.com/My-Own-Working-Space/Vision-Based-Fault-Detection)**
+A vision-based fault detection system for 110kV power grids using UAVs, AI (YOLOv8 & Roboflow Workflow), and a real-time management dashboard built with ASP.NET Core 9.0.
 `ASP.NET Core 9.0, PyTorch, Computer-Vision`
 
 ---
