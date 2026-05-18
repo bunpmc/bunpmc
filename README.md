@@ -22,11 +22,10 @@
 ---
 
 `02` &nbsp; **Stats**
-
 <div align="center">
   <table><tr>
-    <td><img src="https://github-readme-stats.vercel.app/api?username=bunpmc&show_icons=true&theme=transparent&hide_border=true&title_color=888780&text_color=888780&icon_color=1D9E75&hide_rank=true" /></td>
-    <td><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=bunpmc&layout=compact&theme=transparent&hide_border=true&title_color=888780&text_color=888780&langs_count=8" /></td>
+    <td><img src="https://github-readme-stats-nine-zeta-18.vercel.app/api?username=bunpmc&show_icons=true&theme=transparent&hide_border=true&title_color=888780&text_color=888780&icon_color=1D9E75&hide_rank=true" /></td>
+    <td><img src="https://github-readme-stats-nine-zeta-18.vercel.app/api/top-langs/?username=bunpmc&layout=compact&theme=transparent&hide_border=true&title_color=888780&text_color=888780&langs_count=8" /></td>
   </tr></table>
 </div>
 
@@ -36,15 +35,11 @@
 
 **[Gender Healthcare Service Management System](https://github.com/My-Own-Working-Space/Gender-Healthcare-Service-Management-System)**  
 Web-based healthcare platform for patients and clinic administrators — responsive frontend for doctors, patients, and admins.  
-`TypeScript`
+`TypeScript, Angular, PostgreSQL`
 
 **[TranscribeAI](https://github.com/My-Own-Working-Space/TranscribeAi)**  
 Multi-agent speech-to-text system using MCP-style tools and FastAPI. Confidence-weighted transcriptions.  
-`TypeScript`
-
-**[Flyntic Studio Demo](https://github.com/Eau-Claire/Flyntic-Studio-Demo)**  
-Modular ASP.NET Core app for drone assembly management and simulation. Extensible and built to scale.  
-`Python`
+`ASP.NET Core 9.0, PyTorch, Computer-Vision`
 
 ---
 
