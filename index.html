@@ -222,6 +222,32 @@
                 gap: 4rem;
             }
         }
+
+        /* Gallery styling */
+        .activity-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+        .thumb-img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+        .thumb-img:hover, .thumb-img.active {
+            opacity: 1;
+            border-color: var(--text-color);
+        }
     </style>
 </head>
 <body>
@@ -298,8 +324,24 @@
         </div>
 
         <div class="projects-grid">
-            <!-- Project 1 -->
+            <!-- Project 1: UAV-GridGuard -->
             <div class="project-card reveal">
+                <div class="project-image-container">
+                    <img src="assets/project_uav_gridguard.png" alt="UAV-GridGuard" class="project-image">
+                    <div class="project-overlay">
+                        <a href="https://github.com/Eau-Claire/UavPms_Org.git" target="_blank" class="btn-circle">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <div class="mb-2"><span class="tag-small">C#</span><span class="tag-small">ASP.NET Core 9</span><span class="tag-small">Supabase</span><span class="tag-small">Hangfire</span><span class="tag-small">RabbitMQ</span></div>
+                    <h3 class="text-2xl mb-2">UAV-GridGuard</h3>
+                    <p class="muted text-sm">Hệ thống backend quản lý và phân tích dữ liệu giám sát đường dây truyền tải điện 110kV sử dụng UAV, tích hợp Hangfire và RabbitMQ.</p>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="project-card reveal" style="transition-delay: 0.1s">
                 <div class="project-image-container">
                     <img src="assets/gender_healthcare_actual.png" alt="Gender Healthcare" class="project-image">
                     <div class="project-overlay">
@@ -314,8 +356,8 @@
                     <p class="muted text-sm">Web-based healthcare platform for patients and clinic administrators.</p>
                 </div>
             </div>
-            <!-- Project 2 -->
-            <div class="project-card reveal" style="transition-delay: 0.1s">
+            <!-- Project 3 -->
+            <div class="project-card reveal" style="transition-delay: 0.2s">
                 <div class="project-image-container">
                     <img src="assets/transcribe_ai_actual.png" alt="TranscribeAI" class="project-image">
                     <div class="project-overlay">
@@ -330,8 +372,8 @@
                     <p class="muted text-sm">Multi-agent speech-to-text system using MCP-style tools and FastAPI.</p>
                 </div>
             </div>
-            <!-- Project 3 -->
-            <div class="project-card reveal" style="transition-delay: 0.2s">
+            <!-- Project 4 -->
+            <div class="project-card reveal" style="transition-delay: 0.3s">
                 <div class="project-image-container">
                     <img src="assets/project_uav_fault_detection_1776858602604.png" alt="Vision Fault Detection" class="project-image">
                     <div class="project-overlay">
@@ -423,8 +465,16 @@
         <div class="activities-list">
             <!-- Activity 1: AABW -->
             <div class="activity-item reveal">
-                <div class="activity-media">
-                    <img src="assets/project_linkable.jpg" alt="LinkAble - Agentic AI Build Week 2026" class="activity-img">
+                <div class="activity-gallery">
+                    <div class="activity-media">
+                        <img src="assets/project_linkable.jpg" alt="LinkAble - Agentic AI Build Week 2026" id="aabw-main-img" class="activity-img">
+                    </div>
+                    <div class="gallery-thumbnails">
+                        <img src="assets/project_linkable.jpg" class="thumb-img active" onclick="changeAabwImage(this)" alt="Hardware Diagram">
+                        <img src="assets/aabw_badge.jpg" class="thumb-img" onclick="changeAabwImage(this)" alt="Builder Badge">
+                        <img src="assets/aabw_hall.jpg" class="thumb-img" onclick="changeAabwImage(this)" alt="Hackathon Hall">
+                        <img src="assets/aabw_breadboard.jpg" class="thumb-img" onclick="changeAabwImage(this)" alt="Breadboard Wiring">
+                    </div>
                 </div>
                 <div class="activity-details">
                     <div class="activity-meta">
@@ -547,6 +597,20 @@
                 });
             });
         });
+
+        // AABW Gallery Handler
+        function changeAabwImage(element) {
+            const mainImg = document.getElementById('aabw-main-img');
+            mainImg.src = element.src;
+            mainImg.alt = element.alt;
+            
+            // Remove active class from all thumbnails in this gallery
+            const thumbnails = element.parentElement.querySelectorAll('.thumb-img');
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            
+            // Add active class to the clicked thumbnail
+            element.classList.add('active');
+        }
     </script>
 </body>
 </html>
