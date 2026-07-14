@@ -146,6 +146,108 @@
         .text-6xl { font-size: 3.75rem; }
         .text-8xl { font-size: 6rem; }
         @media (max-width: 768px) { .text-8xl { font-size: 4rem; } .text-6xl { font-size: 3rem; } }
+
+        /* Activities Section */
+        .activities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            margin-top: 4rem;
+        }
+        .activity-item {
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .activity-media {
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .activity-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .activity-item:hover .activity-img {
+            transform: scale(1.03);
+        }
+        .fallback-media {
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .activity-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .activity-meta {
+            margin-bottom: 0.5rem;
+        }
+        .activity-date {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+        }
+        .activity-role {
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+        .activity-bullets {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .activity-bullets li {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 992px) {
+            .activity-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .activities-list {
+                gap: 4rem;
+            }
+        }
+
+        /* Gallery styling */
+        .activity-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+        .thumb-img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+        .thumb-img:hover, .thumb-img.active {
+            opacity: 1;
+            border-color: var(--text-color);
+        }
     </style>
 </head>
 <body>
@@ -155,6 +257,7 @@
             <div class="nav-links">
                 <a href="#about" class="nav-item">About</a>
                 <a href="#works" class="nav-item">Works</a>
+                <a href="#activities" class="nav-item">Activities</a>
                 <a href="#contact" class="nav-item">Contact</a>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
                     <svg id="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -221,24 +324,56 @@
         </div>
 
         <div class="projects-grid">
-            <!-- Project 1 -->
+            <!-- Project 1: UAV-PMS -->
             <div class="project-card reveal">
                 <div class="project-image-container">
-                    <img src="assets/gender_healthcare_actual.png" alt="Gender Healthcare" class="project-image">
+                    <img src="assets/project_uav_gridguard.png" alt="UAV-PMS" class="project-image">
                     <div class="project-overlay">
-                        <a href="https://github.com/My-Own-Working-Space/Gender-Healthcare-Service-Management-System" target="_blank" class="btn-circle">
+                        <a href="https://github.com/Eau-Claire/UavPms_Org.git" target="_blank" class="btn-circle">
                             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22"></path></svg>
                         </a>
                     </div>
                 </div>
                 <div style="margin-top: 1.5rem;">
-                    <div class="mb-2"><span class="tag-small">TypeScript</span><span class="tag-small">Angular</span><span class="tag-small">Supabase</span></div>
-                    <h3 class="text-2xl mb-2">Gender Healthcare</h3>
-                    <p class="muted text-sm">Web-based healthcare platform for patients and clinic administrators.</p>
+                    <div class="mb-2">
+                        <span class="tag-small">C#</span>
+                        <span class="tag-small">ASP.NET Core 9</span>
+                        <span class="tag-small">FastAPI</span>
+                        <span class="tag-small">YOLOv11</span>
+                        <span class="tag-small">RF-DETR</span>
+                        <span class="tag-small">RabbitMQ</span>
+                    </div>
+                    <h3 class="text-2xl mb-2">UAV-PMS</h3>
+                    <p class="muted text-sm">AI-powered UAV inspection platform for power transmission monitoring. Features a dual-model architecture integrating YOLOv11 (edge) and RF-DETR (server) with RabbitMQ, achieving 71.7% mAP@50.</p>
                 </div>
             </div>
-            <!-- Project 2 -->
+            <!-- Project 2: Flyntic Studio -->
             <div class="project-card reveal" style="transition-delay: 0.1s">
+                <div class="project-image-container">
+                    <img src="assets/project_flyntic_studio.png" alt="Flyntic Studio" class="project-image">
+                    <div class="project-overlay" style="gap: 1rem;">
+                        <a href="https://github.com/Eau-Claire/Flyntic-Studio-Demo" target="_blank" class="btn-circle" title="View Source">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22"></path></svg>
+                        </a>
+                        <a href="https://flyntic.site" target="_blank" class="btn-circle" title="Visit Site">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <div class="mb-2">
+                        <span class="tag-small">Godot</span>
+                        <span class="tag-small">React</span>
+                        <span class="tag-small">Vite</span>
+                        <span class="tag-small">Supabase</span>
+                        <span class="tag-small">ASP.NET Core</span>
+                    </div>
+                    <h3 class="text-2xl mb-2">Flyntic Studio <span style="font-size: 0.8rem; color: var(--accent-color); font-weight: normal;">(Student Startup Project)</span></h3>
+                    <p class="muted text-sm">Product Owner for a virtual drone assembly and 3D simulation platform using Godot, integrated with a React/Vite web application and Supabase.</p>
+                </div>
+            </div>
+            <!-- Project 3: TranscribeAI -->
+            <div class="project-card reveal" style="transition-delay: 0.2s">
                 <div class="project-image-container">
                     <img src="assets/transcribe_ai_actual.png" alt="TranscribeAI" class="project-image">
                     <div class="project-overlay">
@@ -251,22 +386,6 @@
                     <div class="mb-2"><span class="tag-small">Python</span><span class="tag-small">FastAPI</span><span class="tag-small">React</span></div>
                     <h3 class="text-2xl mb-2">TranscribeAI</h3>
                     <p class="muted text-sm">Multi-agent speech-to-text system using MCP-style tools and FastAPI.</p>
-                </div>
-            </div>
-            <!-- Project 3 -->
-            <div class="project-card reveal" style="transition-delay: 0.2s">
-                <div class="project-image-container">
-                    <img src="assets/project_uav_fault_detection_1776858602604.png" alt="Vision Fault Detection" class="project-image">
-                    <div class="project-overlay">
-                        <a href="https://github.com/My-Own-Working-Space/Vision-Based-Fault-Detection" target="_blank" class="btn-circle">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22"></path></svg>
-                        </a>
-                    </div>
-                </div>
-                <div style="margin-top: 1.5rem;">
-                    <div class="mb-2"><span class="tag-small">Python</span><span class="tag-small">YOLOv8</span><span class="tag-small">ASP.NET Core 9</span></div>
-                    <h3 class="text-2xl mb-2">Vision-Based Fault Detection</h3>
-                    <p class="muted text-sm">AI-powered fault detection for power grids using UAVs and YOLOv8.</p>
                 </div>
             </div>
         </div>
@@ -282,15 +401,25 @@
             <div class="projects-grid-small">
                 <!-- Mini Card 1 -->
                 <div class="project-card-small reveal">
-                    <img src="assets/project_uav_inspection_1776855327733.png" class="project-image-mini" alt="Flyntic">
+                    <img src="assets/gender_healthcare_actual.png" class="project-image-mini" alt="Gender Healthcare">
                     <div style="flex:1">
-                        <h3 class="text-xl">Flyntic Studio</h3>
-                        <p class="muted text-xs mb-2">Modular ASP.NET Core app for drone assembly management.</p>
-                        <div><span class="tag-mini">C#</span><span class="tag-mini">ASP.NET Core</span></div>
+                        <h3 class="text-xl">Gender Healthcare</h3>
+                        <p class="muted text-xs mb-2">Web-based healthcare platform for patients and clinic administrators.</p>
+                        <div><span class="tag-mini">TypeScript</span><span class="tag-mini">Angular</span><span class="tag-mini">Supabase</span></div>
                     </div>
-                    <a href="https://github.com/Eau-Claire/Flyntic-Studio-Demo" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                    <a href="https://github.com/My-Own-Working-Space/Gender-Healthcare-Service-Management-System" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                 </div>
                 <!-- Mini Card 2 -->
+                <div class="project-card-small reveal">
+                    <img src="assets/project_uav_fault_detection_1776858602604.png" class="project-image-mini" alt="Vision Fault Detection">
+                    <div style="flex:1">
+                        <h3 class="text-xl">Vision Fault Detection</h3>
+                        <p class="muted text-xs mb-2">AI-powered fault detection for power grids using UAVs and YOLOv8.</p>
+                        <div><span class="tag-mini">Python</span><span class="tag-mini">YOLOv8</span><span class="tag-mini">ASP.NET Core 9</span></div>
+                    </div>
+                    <a href="https://github.com/My-Own-Working-Space/Vision-Based-Fault-Detection" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                </div>
+                <!-- Mini Card 3 -->
                 <div class="project-card-small reveal">
                     <img src="assets/project_telegram_bot_1776858675984.png" class="project-image-mini" alt="Telegram">
                     <div style="flex:1">
@@ -300,7 +429,7 @@
                     </div>
                     <a href="https://github.com/My-Own-Working-Space/TelegramBot" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                 </div>
-                <!-- Mini Card 3 -->
+                <!-- Mini Card 4 -->
                 <div class="project-card-small reveal">
                     <img src="assets/project_learn_vietnamese_1776858703158.png" class="project-image-mini" alt="Vietnamese">
                     <div style="flex:1">
@@ -310,7 +439,7 @@
                     </div>
                     <a href="https://github.com/My-Own-Working-Space/Learn-Vietnamese" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                 </div>
-                <!-- Mini Card 4 -->
+                <!-- Mini Card 5 -->
                 <div class="project-card-small reveal">
                     <img src="assets/project_learning_system_1776858651872.png" class="project-image-mini" alt="Learning">
                     <div style="flex:1">
@@ -320,7 +449,7 @@
                     </div>
                     <a href="https://github.com/My-Own-Working-Space/Online-Learning-System" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                 </div>
-                <!-- Mini Card 5 -->
+                <!-- Mini Card 6 -->
                 <div class="project-card-small reveal">
                     <img src="assets/project_chat_app_1776858629000.png" class="project-image-mini" alt="Chat">
                     <div style="flex:1">
@@ -329,6 +458,69 @@
                         <div><span class="tag-mini">C#</span><span class="tag-mini">WPF</span></div>
                     </div>
                     <a href="https://github.com/My-Own-Working-Space/TCPClient-ChatApp" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities & Competitions Section -->
+    <section id="activities" class="container" style="padding: 10rem 0; border-top: 1px solid var(--border-color)">
+        <div class="works-header reveal">
+            <div>
+                <p class="muted serif italic">Competitions & Research</p>
+                <h2 class="text-5xl">Activities</h2>
+            </div>
+        </div>
+
+        <div class="activities-list">
+            <!-- Activity 1: AABW -->
+            <div class="activity-item reveal">
+                <div class="activity-gallery">
+                    <div class="activity-media">
+                        <img src="assets/project_linkable.jpg" alt="LinkAble - Agentic AI Build Week 2026" id="aabw-main-img" class="activity-img">
+                    </div>
+                    <div class="gallery-thumbnails">
+                        <img src="assets/project_linkable.jpg" class="thumb-img active" onclick="changeAabwImage(this)" alt="Hardware Diagram">
+                        <img src="assets/aabw_badge.jpg" class="thumb-img" onclick="changeAabwImage(this)" alt="Builder Badge">
+                        <img src="assets/aabw_hall.jpg" class="thumb-img" onclick="changeAabwImage(this)" alt="Hackathon Hall">
+                        <img src="assets/aabw_breadboard.jpg" class="thumb-img" onclick="changeAabwImage(this)" alt="Breadboard Wiring">
+                    </div>
+                </div>
+                <div class="activity-details">
+                    <div class="activity-meta">
+                        <span class="activity-date serif italic">Jul 2026</span>
+                    </div>
+                    <h3 class="text-3xl mb-2">Agentic AI Build Week 2026 (AABW)</h3>
+                    <p class="activity-role mb-4"><strong>Team Member</strong> | Physical AI & Robotics & Gaming Track</p>
+                    <ul class="activity-bullets muted">
+                        <li>Built <strong>LinkAble</strong>, an AI-powered communication assistant for Deaf and Hard of Hearing users.</li>
+                        <li>Developed <strong>ASP.NET Core</strong> backend integrating Whisper, sign language recognition, and AI-generated notes, reminders, appointments, and tasks.</li>
+                        <li>Designed asynchronous workflows with <strong>RabbitMQ</strong> and delivered an end-to-end prototype during the hackathon.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Activity 2: ResFes -->
+            <div class="activity-item reveal" style="transition-delay: 0.1s">
+                <div class="activity-media fallback-media">
+                    <div class="academic-icon">
+                        <svg viewBox="0 0 24 24" width="60" height="60" stroke="var(--accent-color)" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="activity-details">
+                    <div class="activity-meta">
+                        <span class="activity-date serif italic">Mar – Aug 2025</span>
+                    </div>
+                    <h3 class="text-3xl mb-2">FPT Research Festival (ResFes) 2025</h3>
+                    <p class="activity-role mb-4"><strong>Research Team Member</strong></p>
+                    <ul class="activity-bullets muted">
+                        <li>Conducted research on <strong>Angler</strong>, an AI Agent for tutoring Probability & Statistics at FPT University.</li>
+                        <li>Proposed and implemented a <strong>RAG-based</strong> tutoring system using structured academic materials for step-by-step explanations and formula retrieval.</li>
+                        <li>Contributed to literature review, system design, and evaluation methodology for AI-assisted learning.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -415,6 +607,20 @@
                 });
             });
         });
+
+        // AABW Gallery Handler
+        function changeAabwImage(element) {
+            const mainImg = document.getElementById('aabw-main-img');
+            mainImg.src = element.src;
+            mainImg.alt = element.alt;
+            
+            // Remove active class from all thumbnails in this gallery
+            const thumbnails = element.parentElement.querySelectorAll('.thumb-img');
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            
+            // Add active class to the clicked thumbnail
+            element.classList.add('active');
+        }
     </script>
 </body>
 </html>
