@@ -146,6 +146,82 @@
         .text-6xl { font-size: 3.75rem; }
         .text-8xl { font-size: 6rem; }
         @media (max-width: 768px) { .text-8xl { font-size: 4rem; } .text-6xl { font-size: 3rem; } }
+
+        /* Activities Section */
+        .activities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            margin-top: 4rem;
+        }
+        .activity-item {
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .activity-media {
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .activity-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .activity-item:hover .activity-img {
+            transform: scale(1.03);
+        }
+        .fallback-media {
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .activity-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .activity-meta {
+            margin-bottom: 0.5rem;
+        }
+        .activity-date {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+        }
+        .activity-role {
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+        .activity-bullets {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .activity-bullets li {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 992px) {
+            .activity-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .activities-list {
+                gap: 4rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -155,6 +231,7 @@
             <div class="nav-links">
                 <a href="#about" class="nav-item">About</a>
                 <a href="#works" class="nav-item">Works</a>
+                <a href="#activities" class="nav-item">Activities</a>
                 <a href="#contact" class="nav-item">Contact</a>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
                     <svg id="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -329,6 +406,61 @@
                         <div><span class="tag-mini">C#</span><span class="tag-mini">WPF</span></div>
                     </div>
                     <a href="https://github.com/My-Own-Working-Space/TCPClient-ChatApp" target="_blank" class="muted"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities & Competitions Section -->
+    <section id="activities" class="container" style="padding: 10rem 0; border-top: 1px solid var(--border-color)">
+        <div class="works-header reveal">
+            <div>
+                <p class="muted serif italic">Competitions & Research</p>
+                <h2 class="text-5xl">Activities</h2>
+            </div>
+        </div>
+
+        <div class="activities-list">
+            <!-- Activity 1: AABW -->
+            <div class="activity-item reveal">
+                <div class="activity-media">
+                    <img src="assets/project_linkable.jpg" alt="LinkAble - Agentic AI Build Week 2026" class="activity-img">
+                </div>
+                <div class="activity-details">
+                    <div class="activity-meta">
+                        <span class="activity-date serif italic">Jul 2026</span>
+                    </div>
+                    <h3 class="text-3xl mb-2">Agentic AI Build Week 2026 (AABW)</h3>
+                    <p class="activity-role mb-4"><strong>Team Member</strong> | Physical AI & Robotics & Gaming Track</p>
+                    <ul class="activity-bullets muted">
+                        <li>Built <strong>LinkAble</strong>, an AI-powered communication assistant for Deaf and Hard of Hearing users.</li>
+                        <li>Developed <strong>ASP.NET Core</strong> backend integrating Whisper, sign language recognition, and AI-generated notes, reminders, appointments, and tasks.</li>
+                        <li>Designed asynchronous workflows with <strong>RabbitMQ</strong> and delivered an end-to-end prototype during the hackathon.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Activity 2: ResFes -->
+            <div class="activity-item reveal" style="transition-delay: 0.1s">
+                <div class="activity-media fallback-media">
+                    <div class="academic-icon">
+                        <svg viewBox="0 0 24 24" width="60" height="60" stroke="var(--accent-color)" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="activity-details">
+                    <div class="activity-meta">
+                        <span class="activity-date serif italic">Mar – Aug 2025</span>
+                    </div>
+                    <h3 class="text-3xl mb-2">FPT Research Festival (ResFes) 2025</h3>
+                    <p class="activity-role mb-4"><strong>Research Team Member</strong></p>
+                    <ul class="activity-bullets muted">
+                        <li>Conducted research on <strong>Angler</strong>, an AI Agent for tutoring Probability & Statistics at FPT University.</li>
+                        <li>Proposed and implemented a <strong>RAG-based</strong> tutoring system using structured academic materials for step-by-step explanations and formula retrieval.</li>
+                        <li>Contributed to literature review, system design, and evaluation methodology for AI-assisted learning.</li>
+                    </ul>
                 </div>
             </div>
         </div>
