@@ -33,6 +33,10 @@
 
 `03` &nbsp; **Selected work**
 
+**[Uav-Powerline-Defect-Detection](https://github.com/Eau-Claire/Uav-Powerline-Defect-Detection)**  
+Reusable data-centric research toolkit for power-line defect detection in UAV imagery. The repository contains dataset ingestion and curation, leakage controls, training and evaluation utilities, the controlled Raw-versus-Curated benchmark, Finding Nemo audit results, historical experiment evidence, and optional deployment runtimes.  
+`ASP.NET Core 9.0, PyTorch, Computer-Vision`
+
 **[Gender Healthcare Service Management System](https://github.com/My-Own-Working-Space/Gender-Healthcare-Service-Management-System)**  
 Web-based healthcare platform for patients and clinic administrators — responsive frontend for doctors, patients, and admins.  
 `TypeScript, Angular, PostgreSQL`
@@ -40,10 +44,6 @@ Web-based healthcare platform for patients and clinic administrators — respons
 **[TranscribeAI](https://github.com/My-Own-Working-Space/TranscribeAi)**  
 Multi-agent speech-to-text system using MCP-style tools and FastAPI. Confidence-weighted transcriptions.  
 `ASP.NET Core 9.0, FastAPI, Groq`
-
-**[Vision-Based-Fault-Detection](https://github.com/My-Own-Working-Space/Vision-Based-Fault-Detection)**  
-A vision-based fault detection system for 110kV power grids using UAVs, AI (YOLOv8 & Roboflow Workflow), and a real-time management dashboard built with ASP.NET Core 9.0.  
-`ASP.NET Core 9.0, PyTorch, Computer-Vision`
 
 ---
 
